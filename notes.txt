@@ -1,0 +1,16 @@
+Notes
+====================
+
+32X Specific Formats:
+jsr (Offset)+$880000
+lea (Offset)+$880000
+dc.l (Offset)+$880000
+
+Compression List:
+Art = Nemesis
+Blocks = Enigma
+Chunks = Enigma
+Layout = Enigma
+
+Block Size = 16x16
+Chunk Size = 128x128
