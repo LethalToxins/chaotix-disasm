@@ -15,8 +15,7 @@ EniDec:
                 move.w  (a0)+,d5
                 moveq   #$10,d6
 
-loc_74CFE:                              ; CODE XREF: sub_74D2E+8↓j
-                                        ; sub_74D3A+A↓j ...
+loc_74CFE:
                 moveq   #7,d0
                 move.w  d6,d7
                 sub.w   d0,d7
@@ -47,8 +46,7 @@ loc_74D24:                              ; CODE XREF: EniDec+36↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_74D2E:                              ; CODE XREF: sub_74D2E+4↓j
-                                        ; DATA XREF: EniDec+44↑r
+sub_74D2E:
                 move.w  a2,(a1)+
                 addq.w  #1,a2
                 dbf     d2,sub_74D2E
@@ -127,8 +125,7 @@ loc_74DA4:                              ; CODE XREF: sub_74D48+60↓j
                 bra.w   loc_74CFE
 ; ---------------------------------------------------------------------------
 
-loc_74DB0:                              ; CODE XREF: sub_74D48+6↑j
-                                        ; sub_74D48+16↑j ...
+loc_74DB0:
                 cmpi.w  #$10,d6
                 bne.s   loc_74DB8
                 subq.w  #1,a0
@@ -142,8 +139,7 @@ loc_74DB8:                              ; CODE XREF: sub_74D48+6C↑j
 
 ; ---------------------------------------------------------------------------
 
-loc_74DC2:                              ; CODE XREF: sub_74D48+26↑p
-                                        ; sub_74D48+36↑p ...
+loc_74DC2:
                 move.w  a3,d3
                 move.b  d4,d1
                 bpl.s   loc_74DD2
@@ -152,8 +148,7 @@ loc_74DC2:                              ; CODE XREF: sub_74D48+26↑p
                 beq.s   loc_74DD2
                 ori.w   #$8000,d3
 
-loc_74DD2:                              ; CODE XREF: ROM:00074DC6↑j
-                                        ; ROM:00074DCC↑j
+loc_74DD2:
                 add.b   d1,d1
                 bpl.s   loc_74DE0
                 subq.w  #1,d6
@@ -161,8 +156,7 @@ loc_74DD2:                              ; CODE XREF: ROM:00074DC6↑j
                 beq.s   loc_74DE0
                 addi.w  #$4000,d3
 
-loc_74DE0:                              ; CODE XREF: ROM:00074DD4↑j
-                                        ; ROM:00074DDA↑j
+loc_74DE0:
                 add.b   d1,d1
                 bpl.s   loc_74DEE
                 subq.w  #1,d6
@@ -170,8 +164,7 @@ loc_74DE0:                              ; CODE XREF: ROM:00074DD4↑j
                 beq.s   loc_74DEE
                 addi.w  #$2000,d3
 
-loc_74DEE:                              ; CODE XREF: ROM:00074DE2↑j
-                                        ; ROM:00074DE8↑j
+loc_74DEE:
                 add.b   d1,d1
                 bpl.s   loc_74DFC
                 subq.w  #1,d6
@@ -179,8 +172,7 @@ loc_74DEE:                              ; CODE XREF: ROM:00074DE2↑j
                 beq.s   loc_74DFC
                 ori.w   #$1000,d3
 
-loc_74DFC:                              ; CODE XREF: ROM:00074DF0↑j
-                                        ; ROM:00074DF6↑j
+loc_74DFC:
                 add.b   d1,d1
                 bpl.s   loc_74E0A
                 subq.w  #1,d6
@@ -188,8 +180,7 @@ loc_74DFC:                              ; CODE XREF: ROM:00074DF0↑j
                 beq.s   loc_74E0A
                 ori.w   #$800,d3
 
-loc_74E0A:                              ; CODE XREF: ROM:00074DFE↑j
-                                        ; ROM:00074E04↑j
+loc_74E0A:
                 move.w  d5,d1
                 move.w  d6,d7
                 sub.w   a5,d7
@@ -204,7 +195,7 @@ loc_74E0A:                              ; CODE XREF: ROM:00074DFE↑j
                 lsr.l   d6,d1
                 move.w  a5,d0
                 add.w   d0,d0
-                and.w   locret_74E60(pc,d0.w),d1
+                and.w   EniDec_Masks-2(pc,d0.w),d1
                 add.w   d3,d1
                 rts
 ; ---------------------------------------------------------------------------
@@ -214,7 +205,7 @@ loc_74E2E:                              ; CODE XREF: ROM:00074E10↑j
                 lsr.w   d7,d1
                 move.w  a5,d0
                 add.w   d0,d0
-                and.w   locret_74E60(pc,d0.w),d1
+                and.w   EniDec_Masks-2(pc,d0.w),d1
                 add.w   d3,d1
                 move.w  a5,d0
                 sub.w   d0,d6
@@ -232,29 +223,17 @@ loc_74E4E:                              ; CODE XREF: ROM:loc_74E2E↑j
                 moveq   #$10,d6
                 move.w  a5,d0
                 add.w   d0,d0
-                and.w   locret_74E60(pc,d0.w),d1
+                and.w   EniDec_Masks-2(pc,d0.w),d1
                 add.w   d3,d1
                 move.b  (a0)+,d5
                 lsl.w   #8,d5
                 move.b  (a0)+,d5
 
-locret_74E60:                           ; DATA XREF: ROM:00074E26↑r
-                                        ; ROM:00074E36↑r ...
+locret_74E60:
                 rts
 ; ---------------------------------------------------------------------------
-                dc.w 1
-                dc.w 3
-                dc.w 7
-                dc.w $F
-                dc.w $1F
-                dc.w $3F
-                dc.w $7F
-                dc.w $FF
-                dc.w $1FF
-                dc.w $3FF
-                dc.w $7FF
-                dc.w $FFF
-                dc.w $1FFF
-                dc.w $3FFF
-                dc.w $7FFF
-                dc.w $FFFF
+EniDec_Masks:
+		dc.w	 1,    3,    7,   $F
+		dc.w   $1F,  $3F,  $7F,  $FF
+		dc.w  $1FF, $3FF, $7FF, $FFF
+		dc.w $1FFF,$3FFF,$7FFF,$FFFF

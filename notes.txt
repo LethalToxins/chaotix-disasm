@@ -14,3 +14,7 @@ Layout = Enigma
 
 Block Size = 16x16
 Chunk Size = 128x128
+
+32X Specific Formats Decomp:
+$8F492A = $7492A (NemDec)
+$8F4CE6 = $74CE6 (EniDec)
